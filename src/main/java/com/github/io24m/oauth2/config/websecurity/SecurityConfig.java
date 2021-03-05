@@ -1,4 +1,4 @@
-package com.github.io24m.oauth2.config;
+package com.github.io24m.oauth2.config.websecurity;
 
 import com.github.io24m.oauth2.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilterBean() throws Exception {
-        UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
+        UsernamePasswordAuthenticationFilter filter = new AuthenticationProcessingFilter();
         filter.setAuthenticationManager(authenticationManagerBean());
         filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
         filter.setAuthenticationFailureHandler(authenticationFailureHandler);

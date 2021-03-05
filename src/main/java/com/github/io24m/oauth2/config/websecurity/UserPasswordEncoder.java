@@ -1,4 +1,4 @@
-package com.github.io24m.oauth2.config;
+package com.github.io24m.oauth2.config.websecurity;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

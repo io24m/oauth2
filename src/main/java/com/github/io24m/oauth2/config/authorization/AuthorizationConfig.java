@@ -1,4 +1,4 @@
-package com.github.io24m.oauth2.config;
+package com.github.io24m.oauth2.config.authorization;
 
 import com.github.io24m.oauth2.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

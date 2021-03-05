@@ -1,5 +1,6 @@
-package com.github.io24m.oauth2.config;
+package com.github.io24m.oauth2.config.resource;
 
+import com.github.io24m.oauth2.config.Oauth2Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

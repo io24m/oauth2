@@ -1,4 +1,4 @@
-package com.github.io24m.oauth2.config;
+package com.github.io24m.oauth2.config.resource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
