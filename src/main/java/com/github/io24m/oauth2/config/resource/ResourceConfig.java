@@ -30,13 +30,11 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                .and()
                 //请求权限配置
-                .authorizeRequests()
+                .and().authorizeRequests()
                 //下边的路径放行,不需要经过认证
-                .antMatchers("/oauth/*","/login", "/auth/user/login").permitAll()
+                .antMatchers("/oauth/*", "/login").permitAll()
                 //OPTIONS请求不需要鉴权
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 //用户的增删改接口只允许管理员访问

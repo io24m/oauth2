@@ -24,14 +24,14 @@ public class CustomAuthExceptionHandler implements AuthenticationEntryPoint, Acc
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         Throwable cause = e.getCause();
-        response.setContentType("application/json;charset=UTF-8");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        // CORS "pre-flight" request
-        response.addHeader("Access-Control-Allow-Origin", "*");
-        response.addHeader("Cache-Control", "no-cache");
-        response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-        response.addHeader("Access-Control-Max-Age", "1800");
+//        response.setContentType("application/json;charset=UTF-8");
+//        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//        // CORS "pre-flight" request
+//        response.addHeader("Access-Control-Allow-Origin", "*");
+//        response.addHeader("Cache-Control", "no-cache");
+//        response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+//        response.addHeader("Access-Control-Max-Age", "1800");
         if (cause instanceof InvalidTokenException) {
             //log.error("InvalidTokenException : {}", cause.getMessage());
             //Token无效
@@ -45,13 +45,6 @@ public class CustomAuthExceptionHandler implements AuthenticationEntryPoint, Acc
 
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
-        response.setContentType("application/json;charset=UTF-8");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.addHeader("Access-Control-Allow-Origin", "*");
-        response.addHeader("Cache-Control", "no-cache");
-        response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-        response.addHeader("Access-Control-Max-Age", "1800");
         //访问资源的用户权限不足
         //log.error("AccessDeniedException : {}", e.getMessage());
         response.getWriter().write("NoAuthentication");

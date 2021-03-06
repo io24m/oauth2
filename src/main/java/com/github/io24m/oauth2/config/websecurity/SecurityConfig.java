@@ -46,12 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .authorizeRequests()
 //                .mvcMatchers("/account/updatepassword").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                //.formLogin().loginPage("/login").permitAll()
-                //.and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-                .and()
-                .csrf().disable()
+                .and().formLogin().loginPage("/login").permitAll()
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+                .and().csrf().disable()
 //                .addFilterAt(getCisSsoLogoutFilter(), LogoutFilter.class)
                 .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
