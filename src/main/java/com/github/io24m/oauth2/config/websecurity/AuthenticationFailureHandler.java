@@ -19,7 +19,7 @@ import java.io.IOException;
 public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     public AuthenticationFailureHandler() {
-        super.setDefaultFailureUrl("/login?error");
+        super.setDefaultFailureUrl("/login");
     }
 
     @Override
