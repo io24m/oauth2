@@ -34,7 +34,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
                 //请求权限配置
                 .and().authorizeRequests()
                 //下边的路径放行,不需要经过认证
-                .antMatchers("/oauth/*", "/login").permitAll()
+                .antMatchers("/oauth/*", "/login","/error/**").permitAll()
                 //OPTIONS请求不需要鉴权
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 //用户的增删改接口只允许管理员访问

@@ -42,9 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 //                .antMatchers("/login", "/oauth/authorize")
-                .antMatchers("/oauth/**", "/login/**", "/logout").permitAll()
-//                .and()
-//                .authorizeRequests()
+                .antMatchers("/oauth/**", "/login/**", "/logout","/error/**").permitAll()
+                .and()
+                .authorizeRequests()
 //                .mvcMatchers("/account/updatepassword").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()

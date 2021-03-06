@@ -1,5 +1,6 @@
 package com.github.io24m.oauth2.config.websecurity;
 
+import com.github.io24m.oauth2.service.user.User;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -16,8 +17,14 @@ import java.io.IOException;
  */
 @Configuration
 public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+
+    public AuthenticationFailureHandler() {
+        super.setDefaultFailureUrl("/login?error");
+    }
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+
         super.onAuthenticationFailure(request, response, exception);
     }
 }

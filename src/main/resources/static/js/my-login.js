@@ -60,12 +60,51 @@ $(function() {
 		});
 	});
 
-	$(".my-login-validation").submit(function() {
-		var form = $(this);
-        if (form[0].checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-		form.addClass('was-validated');
+	// $(".my-login-validation").submit(function() {
+	// 	var form = $(this);
+    //     if (form[0].checkValidity() === false) {
+    //       event.preventDefault();
+    //       event.stopPropagation();
+    //     }
+	// 	form.addClass('was-validated');
+	// });
+	var submit = function () {
+		var btn = $("#login_btn");
+		var account = $("#username").val().trim();
+		var pwd = $("#password").val().trim();
+		var errMessage=$("#error_message");
+		if (!account) {
+			$("#username").focus();
+			errMessage.html("用户名不能为空");
+			return;
+		}
+		if (!pwd) {
+			$("#password").focus();
+			errMessage.html("密码不能为空");
+			return;
+		}
+		btn.html("Login...");
+		$.ajax({
+			type: "POST",
+			url: "/login",
+			data: $('#loginForm').serialize(),
+			success: function (msg) {
+				btn.html("Login");
+				if (!msg) {
+					window.location = "/";
+					return
+				}
+				errMessage.html(msg);
+			}
+		});
+	};
+	$("#login_btn").on("click", submit);
+	$(document).keyup(function () {
+		if (event.keyCode === 13) {
+			submit();
+		}
 	});
+
+
+
 });
