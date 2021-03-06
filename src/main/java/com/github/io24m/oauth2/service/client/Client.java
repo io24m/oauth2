@@ -3,9 +3,7 @@ package com.github.io24m.oauth2.service.client;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author lk1
@@ -17,10 +15,12 @@ public class Client implements ClientDetails {
     public String getClientId() {
         return "test-client";
     }
+
     @Override
     public String getClientSecret() {
         return "test-client";
     }
+
     @Override
     public Set<String> getResourceIds() {
         return null;
@@ -28,27 +28,27 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isSecretRequired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isScoped() {
-        return false;
+        return true;
     }
 
     @Override
     public Set<String> getScope() {
-        return null;
+        return new HashSet<>(Arrays.asList("read"));
     }
 
     @Override
     public Set<String> getAuthorizedGrantTypes() {
-        return null;
+        return new HashSet<>(Arrays.asList("authorization_code", "client_credentials"));
     }
 
     @Override
     public Set<String> getRegisteredRedirectUri() {
-        return null;
+        return new HashSet<>(Collections.singletonList("http://localhost:9001/test"));
     }
 
     @Override
@@ -58,17 +58,17 @@ public class Client implements ClientDetails {
 
     @Override
     public Integer getAccessTokenValiditySeconds() {
-        return null;
+        return 3600;
     }
 
     @Override
     public Integer getRefreshTokenValiditySeconds() {
-        return null;
+        return 3600;
     }
 
     @Override
     public boolean isAutoApprove(String s) {
-        return false;
+        return true;
     }
 
     @Override

@@ -15,4 +15,8 @@ public class HomeController {
     public boolean index() {
         return true;
     }
+    @RequestMapping("/test")
+    public boolean test(){
+        return true;
+    }
 }
