@@ -1,6 +1,7 @@
 package com.github.io24m.oauth2.service.client;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import java.util.*;
@@ -13,12 +14,12 @@ import java.util.*;
 public class Client implements ClientDetails {
     @Override
     public String getClientId() {
-        return "test-client";
+        return "dipauditWeb";
     }
 
     @Override
     public String getClientSecret() {
-        return "test-client";
+        return "A8034E23539C4F17A2353BE2E8FD87E7";
     }
 
     @Override
@@ -33,7 +34,7 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isScoped() {
-        return true;
+        return false;
     }
 
     @Override
@@ -43,17 +44,24 @@ public class Client implements ClientDetails {
 
     @Override
     public Set<String> getAuthorizedGrantTypes() {
-        return new HashSet<>(Arrays.asList("authorization_code", "client_credentials"));
+        return new HashSet<>(Arrays.asList("authorization_code", "refresh_token", "client_credentials"));
     }
 
     @Override
     public Set<String> getRegisteredRedirectUri() {
-        return new HashSet<>(Collections.singletonList("http://localhost:9001/test"));
+        return new HashSet<>(Arrays.asList(
+                "http://localhost:9001/test",
+                "http://localhost:8091/login",
+                "http://localhost:30170/login",
+                "http://localhost:2790/AccountSso/JavaLogin"
+        ));
     }
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("AUTHENTICATION_SERVICE"));
+        return authorities;
     }
 
     @Override
