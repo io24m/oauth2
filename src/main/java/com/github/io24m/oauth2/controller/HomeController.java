@@ -1,5 +1,6 @@
 package com.github.io24m.oauth2.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,14 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @create 2021-03-05 14:55
  */
 @RestController
-@RequestMapping("")
 public class HomeController {
-    @RequestMapping("")
+    @GetMapping("")
     public boolean index() {
-        return true;
-    }
-    @RequestMapping("/test")
-    public boolean test(){
         return true;
     }
 }

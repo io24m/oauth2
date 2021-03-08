@@ -14,7 +14,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("")
 public class UserController {
 
     @Autowired
