@@ -17,13 +17,13 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return "test-password";
+    public String getUsername() {
+        return "lky";
     }
 
     @Override
-    public String getUsername() {
-        return "test-username";
+    public String getPassword() {
+        return "lky123";
     }
 
     @Override
