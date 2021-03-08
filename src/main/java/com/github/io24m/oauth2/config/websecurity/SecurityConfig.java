@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 /**
  * @author lk1
@@ -42,16 +41,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
-                .antMatchers("/login")
-                .antMatchers("/oauth/authorize")
+        http
+                .requestMatchers()
+                .antMatchers("/oauth/authorize","/login")
                 .and()
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests()
+                //.antMatchers("/oauth/**", "/test").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-                .and().csrf().disable()
+                //.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+                .and().csrf().disable();
 //                .addFilterAt(getCisSsoLogoutFilter(), LogoutFilter.class)
-                .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
+                //.addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
+
+
+//        http.requestMatchers()
+//                .antMatchers("/login")
+//                .antMatchers("/oauth/authorize")
+//                .and()
+//                .authorizeRequests().anyRequest().authenticated()
+//                .and().formLogin().loginPage("/login").permitAll()
+//                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+//                .and().csrf().disable()
+////                .addFilterAt(getCisSsoLogoutFilter(), LogoutFilter.class)
+//                .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
 //        http.authorizeRequests()
 //                .antMatchers("/**").authenticated()
@@ -67,13 +80,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
 
-
 //        http.requestMatchers()
 //                .antMatchers("/login", "/oauth/authorize","/")
-//                .mvcMatchers("/ueditor/**", "/account/updatepassword", "/")
+////                .mvcMatchers("/ueditor/**", "/account/updatepassword", "/")
 //                .and()
 //                .authorizeRequests()
-//                .mvcMatchers("/account/updatepassword").permitAll()
+////                .mvcMatchers("/account/updatepassword").permitAll()
 //                .anyRequest().authenticated()
 //                .and()
 //                .formLogin().loginPage("/login").permitAll()
@@ -83,7 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .csrf().disable()
 ////                .addFilterAt(getCisSsoLogoutFilter(), LogoutFilter.class)
 //                .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
-
 
 
     }

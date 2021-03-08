@@ -18,12 +18,12 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "lky";
+        return "test-password";
     }
 
     @Override
     public String getUsername() {
-        return "lky";
+        return "test-username";
     }
 
     @Override

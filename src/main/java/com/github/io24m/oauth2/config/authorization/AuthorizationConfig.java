@@ -36,8 +36,24 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientService);
+//        clients.withClientDetails(clientService);
+
+        clients.inMemory()
+                .withClient("test-client-id")
+                .secret(passwordEncoder().encode("test-client-secret"))
+                .autoApprove(true)
+                .redirectUris(
+                        "http://localhost:1112/login",
+                        "http://localhost:1113/login",
+                        "http://localhost:18112/AccountSso/JavaLogin",
+                        "http://localhost:30170/login",
+                        "http://localhost:8091/login"
+                )
+                .scopes("user")
+                .accessTokenValiditySeconds(7200)
+                .authorizedGrantTypes("authorization_code");
     }
+
     @Override
     public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         final TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
@@ -46,6 +62,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager);
     }
+
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
@@ -57,6 +74,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         converter.setSigningKey("C5437BED67167F90EB481E6633E34231");
         return converter;
     }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

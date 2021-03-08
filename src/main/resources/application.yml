@@ -3,9 +3,13 @@ server:
   servlet:
     session:
       cookie:
-        name: a
+        name: id_${spring.application.name}_${spring.profiles.active}
 debug: false
 spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
+  application:
+    name: oauth2sso
+  profiles:
+    active: dev

@@ -1,5 +1,6 @@
 package com.github.io24m.oauth2.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,4 +14,10 @@ public class UserController {
     public Principal info(Principal principal) {
         return principal;
     }
+
+    @GetMapping("/user")
+    public Principal getCurrentUser(Principal principal) {
+        return principal;
+    }
+
 }

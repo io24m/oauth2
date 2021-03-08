@@ -14,12 +14,12 @@ import java.util.*;
 public class Client implements ClientDetails {
     @Override
     public String getClientId() {
-        return "dipauditWeb";
+        return "testclient";
     }
 
     @Override
     public String getClientSecret() {
-        return "A8034E23539C4F17A2353BE2E8FD87E7";
+        return "testclient";
     }
 
     @Override
