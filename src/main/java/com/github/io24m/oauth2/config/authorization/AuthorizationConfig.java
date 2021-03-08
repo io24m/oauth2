@@ -51,7 +51,10 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                 )
                 .scopes("user")
                 .accessTokenValiditySeconds(7200)
-                .authorizedGrantTypes("authorization_code");
+                .authorizedGrantTypes(
+                        "authorization_code",
+                        "client_credentials"
+                ).resourceIds("admin-service");
     }
 
     @Override

@@ -13,3 +13,8 @@ spring:
     name: oauth2sso
   profiles:
     active: dev
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:9001/user
+      service-id: oauth2-sso
