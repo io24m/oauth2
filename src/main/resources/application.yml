@@ -18,3 +18,5 @@ security:
     resource:
       user-info-uri: http://localhost:9001/user
       service-id: oauth2-sso
+io24m:
+  name: 1fasfsa
