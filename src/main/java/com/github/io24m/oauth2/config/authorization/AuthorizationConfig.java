@@ -54,7 +54,9 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes(
                         "authorization_code",
                         "client_credentials"
-                ).resourceIds("admin-service");
+                )
+                .resourceIds("admin-service-resource")
+                .authorities("admin-service-all");
     }
 
     @Override
