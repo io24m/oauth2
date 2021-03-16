@@ -9,11 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.io24m.oauth2</groupId>
-    <artifactId>oauth2</artifactId>
+    <artifactId>platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>oauth2</name>
-    <description>Demo project for Spring Boot</description>
-    <packaging>pom</packaging>
+    <name>platform</name>
+    <description>platform</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -21,6 +20,27 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <version>2.1.16.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.3.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -34,6 +54,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
     </dependencies>
 
     <build>
