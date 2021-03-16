@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -36,24 +37,25 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-//        clients.withClientDetails(clientService);
+        clients.withClientDetails(clientService);
+//        InMemoryClientDetailsServiceBuilder inMemoryClientDetailsServiceBuilder = clients.inMemory();
 
-        clients.inMemory()
-                .withClient("test-client-id")
-                .secret(passwordEncoder().encode("test-client-secret"))
-                .autoApprove(true)
-                .redirectUris(
-                        "http://localhost:9003/login",
-                        "http://localhost:9004/login"
-                )
-                .scopes("user")
-                .accessTokenValiditySeconds(7200)
-                .authorizedGrantTypes(
-                        "authorization_code",
-                        "client_credentials"
-                )
-                .resourceIds("admin-service-resource")
-                .authorities("admin-service-all");
+//        inMemoryClientDetailsServiceBuilder
+//                .withClient("test-client-id")
+//                .secret(passwordEncoder().encode("test-client-secret"))
+//                .autoApprove(true)
+//                .redirectUris(
+//                        "http://localhost:9003/login",
+//                        "http://localhost:9004/login"
+//                )
+//                .scopes("user")
+//                .accessTokenValiditySeconds(7200)
+//                .authorizedGrantTypes(
+//                        "authorization_code",
+//                        "client_credentials"
+//                )
+//                .resourceIds("admin-service-resource")
+//                .authorities("admin-service-all");
     }
 
     @Override

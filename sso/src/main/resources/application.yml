@@ -5,6 +5,11 @@ server:
       cookie:
         name: ${spring.application.name}_${spring.profiles.active}
 debug: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -13,6 +18,33 @@ spring:
     name: oauth2sso
   profiles:
     active: dev
+  datasource:
+    url: jdbc:mysql://localhost/sso?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始连接数
+      initialSize: 3
+      # 最小连接池数量
+      minIdle: 3
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+
 security:
   oauth2:
     resource:
