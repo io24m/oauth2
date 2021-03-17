@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author lk1
@@ -12,7 +13,6 @@ import java.util.Collection;
  * @create 2021-03-05 14:14
  */
 public class SSOUser implements UserDetails {
-
     private User user;
 
     public SSOUser(User user) {
@@ -52,5 +52,9 @@ public class SSOUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return user.getEnable();
+    }
+
+    public Date getLastLoginTime() {
+        return user.getLastLoginTime();
     }
 }

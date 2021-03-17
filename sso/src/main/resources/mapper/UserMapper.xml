@@ -84,4 +84,10 @@
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
     where account = #{account,jdbcType=VARCHAR}
   </update>
+  <update id="updateLastLoginTimeByPrimaryKey" parameterType="com.github.io24m.oauth2.sso.domain.User">
+    update user
+    set last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+    where account = #{account,jdbcType=VARCHAR}
+  </update>
+
 </mapper>

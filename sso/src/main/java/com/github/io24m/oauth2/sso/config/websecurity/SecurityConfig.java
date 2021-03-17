@@ -53,16 +53,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-                .and().csrf().disable();
+                .and().csrf().disable()
 //                .addFilterAt(getCisSsoLogoutFilter(), LogoutFilter.class)
-        //.addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(usernamePasswordAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
-    //    @Autowired
+    @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
 
-    //    @Autowired
+    @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
 
     //@Bean
