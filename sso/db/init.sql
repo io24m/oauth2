@@ -33,7 +33,24 @@ CREATE TABLE `oauth_client_details` (
 
 /*Data for the table `oauth_client_details` */
 
-insert  into `oauth_client_details`(`client_id`,`resource_ids`,`client_secret`,`scope`,`authorized_grant_types`,`web_server_redirect_uri`,`authorities`,`access_token_validity`,`refresh_token_validity`,`additional_information`,`autoapprove`) values ('test-client-id','all','test-client-secret','all','authorization_code,refresh_token,client_credentials','http://localhost:9003/login,http://localhost:9004/login','all',7200,7200,NULL,'0');
+insert  into `oauth_client_details`(`client_id`,`resource_ids`,`client_secret`,`scope`,`authorized_grant_types`,`web_server_redirect_uri`,`authorities`,`access_token_validity`,`refresh_token_validity`,`additional_information`,`autoapprove`) values ('test-client-id','all','$2a$10$ScMSs1zQ9CbYV2cPi9iZi.mNHsiQMye/cVdu0epc.6v4S.KYywSNO','all','authorization_code,refresh_token,client_credentials','http://localhost:9003/login,http://localhost:9004/login','all',7200,7200,NULL,'0');
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `account` varchar(128) NOT NULL,
+  `password` varchar(1024) NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `name` varchar(128) DEFAULT NULL,
+  `last_login_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`account`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `user` */
+
+insert  into `user`(`account`,`password`,`enable`,`name`,`last_login_time`) values ('test','$2a$10$65oVg7lO3WJi7wi2OFD2jOmCiyYcF94nymvCcHGTB/3V89KuGw2S.',1,'test',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

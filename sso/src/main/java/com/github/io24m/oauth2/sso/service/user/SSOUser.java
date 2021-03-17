@@ -1,5 +1,6 @@
 package com.github.io24m.oauth2.sso.service.user;
 
+import com.github.io24m.oauth2.sso.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +11,14 @@ import java.util.Collection;
  * @description
  * @create 2021-03-05 14:14
  */
-public class User implements UserDetails {
+public class SSOUser implements UserDetails {
+
+    private User user;
+
+    public SSOUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -18,13 +26,12 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "lky";
+        return user.getAccount();
     }
 
     @Override
     public String getPassword() {
-        //lky123
-        return "$2a$10$65oVg7lO3WJi7wi2OFD2jOmCiyYcF94nymvCcHGTB/3V89KuGw2S.";
+        return user.getPassword();
     }
 
     @Override
@@ -44,6 +51,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.getEnable();
     }
 }

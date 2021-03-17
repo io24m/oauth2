@@ -1,6 +1,6 @@
 package com.github.io24m.oauth2.sso.controller;
 
-import com.github.io24m.oauth2.sso.service.user.User;
+import com.github.io24m.oauth2.sso.service.user.SSOUser;
 import com.github.io24m.oauth2.sso.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,11 +25,11 @@ public class UserController {
         if (auth.getUserAuthentication() == null) {
             return principal;
         }
-        User user;
-        if (ClassUtils.isAssignable(auth.getUserAuthentication().getPrincipal().getClass(), User.class)) {
-            user = (User) (auth.getUserAuthentication().getPrincipal());
+        SSOUser user;
+        if (ClassUtils.isAssignable(auth.getUserAuthentication().getPrincipal().getClass(), SSOUser.class)) {
+            user = (SSOUser) (auth.getUserAuthentication().getPrincipal());
         } else {
-            user = (User) userService.loadUserByUsername(auth.getUserAuthentication().getPrincipal().toString());
+            user = (SSOUser) userService.loadUserByUsername(auth.getUserAuthentication().getPrincipal().toString());
         }
 //        user.setUserPassword(null);
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
