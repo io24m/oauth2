@@ -23,7 +23,8 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "zmzlcapqJJFyWcYApwa/7A==";
+        //lky123
+        return "$2a$10$65oVg7lO3WJi7wi2OFD2jOmCiyYcF94nymvCcHGTB/3V89KuGw2S.";
     }
 
     @Override
