@@ -18,6 +18,10 @@ public class User implements Serializable {
 
     private Date lastLoginTime;
 
+    private Date lastLoginErrorTime;
+
+    private Integer loginErrorCount;
+
     private static final long serialVersionUID = 1L;
 
     public String getAccount() {
@@ -58,5 +62,21 @@ public class User implements Serializable {
 
     public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
+    }
+
+    public Date getLastLoginErrorTime() {
+        return lastLoginErrorTime;
+    }
+
+    public void setLastLoginErrorTime(Date lastLoginErrorTime) {
+        this.lastLoginErrorTime = lastLoginErrorTime;
+    }
+
+    public Integer getLoginErrorCount() {
+        return loginErrorCount;
+    }
+
+    public void setLoginErrorCount(Integer loginErrorCount) {
+        this.loginErrorCount = loginErrorCount;
     }
 }
