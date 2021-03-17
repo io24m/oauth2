@@ -51,4 +51,4 @@ security:
       user-info-uri: http://localhost:9001/user
       service-id: oauth2-sso
 #io24m:
-#  indexPage: https://github.com/io24m/oauth2-sso
+#  indexPage: http://localhost:9003
