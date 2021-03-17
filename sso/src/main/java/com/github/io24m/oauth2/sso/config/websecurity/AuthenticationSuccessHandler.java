@@ -37,7 +37,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
                 User user = new User();
                 user.setAccount(ssoUser.getUsername());
                 user.setLastLoginTime(new Date());
-                userMapper.updateLastLoginTimeByPrimaryKey(user);
+                userMapper.updateByPrimaryKeySelective(user);
             } catch (Exception ex) {
                 logger.error("登录成功日志记录异常", ex);
             }
