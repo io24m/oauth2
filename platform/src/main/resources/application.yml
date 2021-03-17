@@ -17,5 +17,7 @@ security:
       access-token-uri: http://localhost:9001/oauth/token
       user-authorization-uri: http://localhost:9001/oauth/authorize
     resource:
-#      service-id: admin-service
+      #      service-id: admin-service
       user-info-uri: http://localhost:9001/user
+#io24m:
+#  logout: http://localhost:9001/logout
