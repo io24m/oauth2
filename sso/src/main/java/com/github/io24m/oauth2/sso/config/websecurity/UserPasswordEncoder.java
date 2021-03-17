@@ -1,5 +1,6 @@
 package com.github.io24m.oauth2.sso.config.websecurity;
 
+import com.github.io24m.oauth2.sso.util.MD5Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -11,11 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class UserPasswordEncoder implements PasswordEncoder {
     @Override
     public String encode(CharSequence charSequence) {
-        return charSequence.toString();
+        return MD5Utils.encode(charSequence.toString());
     }
 
     @Override
     public boolean matches(CharSequence charSequence, String s) {
-        return charSequence.toString().equals(s);
+        return encode(charSequence).equals(s);
     }
 }
